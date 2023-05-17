@@ -12,7 +12,7 @@ public class MovieCatelogServiceApplication implements CommandLineRunner {
 	}
 
 	public void run(String...args) throws Exception {
-		System.out.println("Movie catalog service is running");
+		System.out.println("Movie catalog service is running right");
 	}
 
 }
