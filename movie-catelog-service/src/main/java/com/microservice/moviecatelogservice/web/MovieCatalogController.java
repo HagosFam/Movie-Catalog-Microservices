@@ -10,8 +10,6 @@ import java.util.List;
 
 @RestController
 public class MovieCatalogController {
-
-
     @RequestMapping("/catalog/{id}")
    public List<CatalogItem> getCatalog(@PathVariable String id) {
         return Collections.singletonList(

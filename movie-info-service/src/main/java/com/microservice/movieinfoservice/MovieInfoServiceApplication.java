@@ -12,7 +12,7 @@ public class MovieInfoServiceApplication implements CommandLineRunner {
 	}
 
 	public void run(String...args ) throws Exception {
-		System.out.println("The one and only ");
+		System.out.println(" Movie info service is running ");
 	}
 
 }
