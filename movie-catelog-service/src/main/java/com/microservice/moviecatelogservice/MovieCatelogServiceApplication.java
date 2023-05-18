@@ -3,9 +3,20 @@ package com.microservice.moviecatelogservice;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 public class MovieCatelogServiceApplication implements CommandLineRunner {
+
+	// if i am going to use restTemplate, rather than initializing RestTemplate on each file, better if
+	// i initialize it here, so that i can autowire and use whereever i call any external API using RestTemplate
+	// @Bean helps me to create the object when the application runs
+	// @Bean are by defualt singlton
+	@Bean
+	public RestTemplate getRestTemplate() {
+		return new RestTemplate();
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(MovieCatelogServiceApplication.class, args);
