@@ -40,11 +40,13 @@ public class MovieCatalogController {
     *
     * */
 
-        UserRatings ratings = template.getForObject("http://localhost:8083/users/" + id, UserRatings.class);
+        // so here after we added @LoadBalanced to our rest template, we replace the localhost:8083 or other url with service name
+        //  UserRatings ratings = template.getForObject("http://localhost:8083/users/" + id, UserRatings.class);, becomes
+        UserRatings ratings = template.getForObject("http://movie-rating-service/users/" + id, UserRatings.class);
 
         return ratings.getRatingList().stream()
                 .map(rating -> {
-                    Movie movie = template.getForObject("http://localhost:8082/movies/" + rating.getMovieId(), Movie.class);
+                    Movie movie = template.getForObject("http://movie-info-service/movies/" + rating.getMovieId(), Movie.class);
                     return new CatalogItem(movie.getName(), "The love story", rating.getRating());
                 })
                 .collect(Collectors.toList());
